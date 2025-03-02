@@ -24,7 +24,7 @@ class SegFormer(nn.Module):
         return output
 
 def loadCheckpoint(net, chekcpointPath, start_epoch):
-    checkpoint = torch.load(chekcpointPath)
+    checkpoint = torch.load(chekcpointPath,map_location="cpu")
     net.load_state_dict(checkpoint['state_dict'])
     if 'epoch' in checkpoint:
         start_epoch = checkpoint['epoch']
