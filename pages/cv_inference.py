@@ -95,14 +95,17 @@ selected_model_name = st.selectbox("Select a model", available_models)
 
 if selected_model_name:
     st.session_state["selected_model"] = selected_model_name
+
 # if st.button("Confirm Model"):
 #     st.session_state.selected_model = selected_model_name
 #     st.success(f"Model '{selected_model_name}' selected!")
 if st.button("Run Model"):
     if st.session_state.get("uploaded_images") is None or uploaded_files is None:
         st.warning("⚠ No image uploaded. Please upload an image.")
+        st.session_state["processed_images"] = None
     if st.session_state.get("selected_model") is None or st.session_state["selected_model"] not in MODELS:
         st.warning("⚠ No model selected. Please choose a model from the list.")
+        st.session_state["processed_images"] = None
     if uploaded_files and st.session_state["selected_model"] in MODELS:
         with st.spinner("Processing image..."):
             image = np.array(Image.open(st.session_state["uploaded_images"]))
