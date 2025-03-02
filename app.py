@@ -2,18 +2,6 @@ import streamlit as st
 import os
 import streamlit.components.v1 as components
 
-
-import base64
-
-# Function to encode an image to Base64
-def get_base64_encoded_image(image_path):
-    with open(image_path, "rb") as image_file:
-        return base64.b64encode(image_file.read()).decode()
-
-# Encode the local image
-image_path = "images/AIR_Lab_June2024.jpg"
-base64_image = get_base64_encoded_image(image_path)
-
 # ✅ Set the page layout to wide (full width)
 st.set_page_config(layout="wide")
 
